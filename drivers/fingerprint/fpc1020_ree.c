@@ -487,7 +487,7 @@ static int fpc1020_probe(struct platform_device *pdev)
 		goto error_remove_sysfs;
 	}
 
-	fpc1020->fpc1020_wq = alloc_workqueue("fpc1020_wq", WQ_HIGHPRI, 1);
+	fpc1020->fpc1020_wq = alloc_workqueue("fpc1020_wq", WQ_HIGHPRI | WQ_UNBOUND, 1);
 	if (!fpc1020->fpc1020_wq) {
 		pr_err("Create input workqueue failed\n");
 		goto error_unregister_device;
