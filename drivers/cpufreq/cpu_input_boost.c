@@ -239,6 +239,7 @@ static void input_unboost_worker(struct work_struct *work)
 #endif /* CONFIG_DYNAMIC_STUNE_BOOST */
 
 	update_online_cpu_policy();
+	cpu_input_boost_kick_general(64);
 }
 
 static void max_boost_worker(struct work_struct *work)
@@ -281,8 +282,9 @@ static void max_unboost_worker(struct work_struct *work)
 		max_stune_boost_active = false;
 	}
 #endif /* CONFIG_DYNAMIC_STUNE_BOOST */
-
+	
 	update_online_cpu_policy();
+	cpu_input_boost_kick_general(64);
 }
 
 static void general_boost_worker(struct work_struct *work)
