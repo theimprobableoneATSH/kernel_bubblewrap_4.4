@@ -29,6 +29,7 @@
 #include <linux/of_gpio.h>
 #include <linux/input.h>
 #include <linux/cpu_input_boost.h>
+#include <linux/devfreq_boost.h>
 
 #define FPC1020_TOUCH_DEV_NAME  "fpc1020tp"
 
@@ -292,6 +293,7 @@ static irqreturn_t fpc1020_irq_handler(int irq, void *_fpc1020)
 	smp_rmb();
 	if (fpc1020->wakeup_enabled && !fpc1020->screen_on) {
 		cpu_input_boost_kick_max(1000);
+		devfreq_boost_kick_max(DEVFREQ_MSM_CPUBW, 1000);
 		pm_wakeup_event(fpc1020->dev, 5000);
 	}
 	sysfs_notify(&fpc1020->dev->kobj, NULL, dev_attr_irq.attr.name);
