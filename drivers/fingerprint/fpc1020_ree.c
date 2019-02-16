@@ -419,7 +419,7 @@ static void fpc1020_suspend_resume(struct work_struct *work)
 	if (!fpc1020->screen_on)
 		set_fingerprintd_nice(MIN_NICE);
 	else
-		set_fingerprintd_nice(0);
+		set_fingerprintd_nice(-20);
 }
 
 static int fb_notifier_callback(struct notifier_block *self,
