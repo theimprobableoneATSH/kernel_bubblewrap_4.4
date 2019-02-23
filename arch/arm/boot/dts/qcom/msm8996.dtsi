@@ -65,6 +65,7 @@
 			qcom,limits-info = <&mitigation_profile0>;
 			enable-method = "psci";
 			qcom,ea = <&ea0>;
+			sched-energy-costs = <&CPU_COST_0 &CLUSTER_COST_0>; 
 			next-level-cache = <&L2_0>;
 			L2_0: l2-cache {
 			      compatible = "cache";
@@ -87,6 +88,7 @@
 			qcom,limits-info = <&mitigation_profile1>;
 			enable-method = "psci";
 			qcom,ea = <&ea1>;
+			sched-energy-costs = <&CPU_COST_0 &CLUSTER_COST_0>; 
 			next-level-cache = <&L2_0>;
 			L1_D_1: l1-dcache {
 				compatible = "cache";
@@ -104,6 +106,7 @@
 			qcom,limits-info = <&mitigation_profile2>;
 			enable-method = "psci";
 			qcom,ea = <&ea2>;
+			sched-energy-costs = <&CPU_COST_1 &CLUSTER_COST_1>; 
 			next-level-cache = <&L2_1>;
 			L2_1: l2-cache {
 			      compatible = "cache";
@@ -126,6 +129,7 @@
 			enable-method = "psci";
 			qcom,limits-info = <&mitigation_profile3>;
 			qcom,ea = <&ea3>;
+			sched-energy-costs = <&CPU_COST_1 &CLUSTER_COST_1>; 
 			next-level-cache = <&L2_1>;
 			L1_D_101: l1-dcache {
 				compatible = "cache";
@@ -157,7 +161,119 @@
 				};
 			};
 		};
-	};
+		energy-costs {
+			CPU_COST_0: core-cost0 {
+				busy-cost-data = <
+					146 30
+					201 34
+					229 39
+					265 44
+					311 49
+					347 56
+					402 63
+					457 71
+					494 80
+					530 91
+					567 102
+					585 116
+					631 131
+					667 148
+					704 167
+					759 189
+				>;
+				idle-cost-data = <
+			  		10 8 6 4
+				>;
+			};
+			CPU_COST_1: core-cost1 {
+				busy-cost-data = <
+					146 32
+					192 35
+					229 38
+					265 42
+					311 46
+					347 51
+					384 56
+					421 62
+					448 68
+					494 75
+					530 83
+					567 91
+					594 100
+					631 110
+					667 122
+					704 134
+					741 147
+					777 162
+					814 179
+					850 197
+					869 216
+					914 238
+					951 262
+					987 289
+					1024 318
+				>;
+				idle-cost-data = <
+					10 8 6 4
+				>;
+			};
+			CLUSTER_COST_0: cluster-cost0 {
+				busy-cost-data = <
+					146 4
+					201 4
+					229 4
+					265 4
+					311 4
+					347 6
+					402 9
+					457 16
+					494 20
+					530 21
+					567 27
+					585 30
+					631 36
+					667 47
+					704 45
+					759 52
+				>;
+				idle-cost-data = <
+					4 3 2 1
+				>;
+			};
+			CLUSTER_COST_1: cluster-cost1 {
+				busy-cost-data = <
+					146 4
+					192 4
+					229 4
+					265 4
+					311 4
+					347 4
+					384 6
+					421 9
+					448 14
+					494 15
+					530 20
+					567 21
+					594 27
+					631 30
+					667 36
+					704 48
+					741 45
+					777 45
+					814 58
+					850 66
+					869 72
+					914 75
+					951 83
+					987 93
+					1024 96	
+				>;
+				idle-cost-data = <
+					4 3 2 1
+				>;
+			};
+		};
+	}; 
 
        clocks {
                xo_board {
