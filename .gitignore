@@ -117,3 +117,11 @@ net/wireguard/
 
 # fetched Android config fragments
 android/configs/android-*.cfg
+
+#My Workspace stuff
+aarch64
+build
+out
+arm-linux-androideabi-
+arm-linux-gnueabi
+build.sh
